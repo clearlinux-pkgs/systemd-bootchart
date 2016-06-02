@@ -1,0 +1,13 @@
+diff -Nurb systemd-bootchart-230-orig/configure.ac systemd-bootchart-230/configure.ac
+--- systemd-bootchart-230-orig/configure.ac	2016-05-31 10:41:53.510823557 -0700
++++ systemd-bootchart-230/configure.ac	2016-06-02 14:41:53.321312674 -0700
+@@ -143,8 +143,7 @@
+         -Wl,--no-undefined \
+         -Wl,-z,relro \
+         -Wl,-z,now \
+-        -pie \
+-        -Wl,-fuse-ld=gold])
++        -pie])
+ AC_SUBST([OUR_LDFLAGS], "$with_ldflags $sanitizer_ldflags")
+ 
+ AC_ARG_WITH([rootprefix],
