@@ -1,0 +1,18 @@
+During early boot, /dev/urandom can actually block....
+.... and we only want random-ish data for hash table keying.
+
+TODO: use cpu instructions
+
+--- systemd-bootchart-230/src/random-util.c~	2016-05-31 17:41:27.000000000 +0000
++++ systemd-bootchart-230/src/random-util.c	2016-06-07 21:10:36.334040329 +0000
+@@ -119,10 +119,6 @@
+         uint8_t *q;
+         int r;
+ 
+-        r = dev_urandom(p, n);
+-        if (r >= 0)
+-                return;
+-
+         /* If some idiot made /dev/urandom unavailable to us, he'll
+          * get a PRNG instead. */
+ 
