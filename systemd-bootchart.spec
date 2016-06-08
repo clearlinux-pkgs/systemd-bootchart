@@ -1,6 +1,6 @@
 Name     : systemd-bootchart
 Version  : 230
-Release  : 3
+Release  : 4
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v230/systemd-bootchart-230.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v230/systemd-bootchart-230.tar.xz
 Summary  : No detailed summary available
@@ -25,6 +25,7 @@ Patch3: 0003-bootchart-mount-proc-early.patch
 Patch4: 0004-bootchart-fix-per-cpu-small-scales.patch
 Patch5: 0005-bootchart-drop-log_info-spam-to-serial-console.patch
 Patch6: 0006-no-dev-urandom.patch
+Patch7: 0007-no-libsystemd.patch
 
 %description
 For systemd-bootchart, several proc debug interfaces are required in the kernel config:
@@ -55,6 +56,7 @@ doc components for the systemd-bootchart package.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 %reconfigure --disable-static

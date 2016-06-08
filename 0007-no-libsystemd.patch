@@ -1,0 +1,25 @@
+--- systemd-bootchart-230.old/configure.ac	2016-05-31 17:41:53.510823557 +0000
++++ systemd-bootchart-230/configure.ac	2016-06-08 00:35:41.753976157 +0000
+@@ -62,9 +62,6 @@
+ #include <linux/random.h>
+ ]])
+ 
+-PKG_CHECK_MODULES(LIBSYSTEMD, [libsystemd >= 221],
+-	[], [AC_MSG_ERROR([*** libsystemd library not found])])
+-
+ CC_CHECK_FLAGS_APPEND([with_cflags], [CFLAGS], [\
+         -pipe \
+         -Wall \
+--- systemd-bootchart-230.old/src/bootchart.c	2016-05-31 17:41:27.027489442 +0000
++++ systemd-bootchart-230/src/bootchart.c	2016-06-08 00:39:34.650079376 +0000
+@@ -294,10 +294,6 @@
+         iovec[j].iov_len = 10 + n;
+         j++;
+ 
+-        r = sd_journal_sendv(iovec, j);
+-        if (r < 0)
+-                log_error_errno(r, "Failed to send bootchart: %m");
+-
+         return 0;
+ }
+ 
