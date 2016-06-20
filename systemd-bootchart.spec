@@ -21,7 +21,6 @@ BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(libsystemd)
 Patch1: 0001-systemd-bootchart-dont-use-gold.patch
 Patch2: 0002-bootchart-use-ms-units-in-a-few-places.patch
-Patch3: 0003-bootchart-mount-proc-early.patch
 Patch4: 0004-bootchart-fix-per-cpu-small-scales.patch
 Patch5: 0005-bootchart-drop-log_info-spam-to-serial-console.patch
 Patch6: 0006-no-dev-urandom.patch
@@ -54,7 +53,6 @@ doc components for the systemd-bootchart package.
 %setup -q -n systemd-bootchart-230
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
