@@ -1,8 +1,8 @@
 Name     : systemd-bootchart
-Version  : 230
-Release  : 7
-URL      : https://github.com/systemd/systemd-bootchart/releases/download/v230/systemd-bootchart-230.tar.xz
-Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v230/systemd-bootchart-230.tar.xz
+Version  : 231
+Release  : 8
+URL      : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-230.tar.xz
+Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -50,7 +50,7 @@ doc components for the systemd-bootchart package.
 
 
 %prep
-%setup -q -n systemd-bootchart-230
+%setup -q -n %{name}-%{version}
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
