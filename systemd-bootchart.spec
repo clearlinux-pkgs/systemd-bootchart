@@ -1,6 +1,6 @@
 Name     : systemd-bootchart
 Version  : 231
-Release  : 8
+Release  : 9
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-230.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Summary  : No detailed summary available
