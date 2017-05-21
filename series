@@ -6,3 +6,4 @@
 0007-no-libsystemd.patch
 mountproc.patch
 wait-one-second.patch
+show_cmdline.patch

@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 231
-Release  : 12
+Release  : 13
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Summary  : No detailed summary available
@@ -30,6 +30,7 @@ Patch5: 0006-no-dev-urandom.patch
 Patch6: 0007-no-libsystemd.patch
 Patch7: mountproc.patch
 Patch8: wait-one-second.patch
+Patch9: show_cmdline.patch
 
 %description
 For systemd-bootchart, several proc debug interfaces are required in the kernel config:
@@ -71,13 +72,14 @@ extras components for the systemd-bootchart package.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1495402293
+export SOURCE_DATE_EPOCH=1495403473
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -96,7 +98,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1495402293
+export SOURCE_DATE_EPOCH=1495403473
 rm -rf %{buildroot}
 %make_install
 
