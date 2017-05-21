@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 231
-Release  : 10
+Release  : 11
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Summary  : No detailed summary available
@@ -69,7 +69,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1495400417
+export SOURCE_DATE_EPOCH=1495400583
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
 %reconfigure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -81,7 +88,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1495400417
+export SOURCE_DATE_EPOCH=1495400583
 rm -rf %{buildroot}
 %make_install
 
