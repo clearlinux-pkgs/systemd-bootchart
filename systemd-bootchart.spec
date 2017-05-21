@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 231
-Release  : 11
+Release  : 12
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v231/systemd-bootchart-231.tar.xz
 Summary  : No detailed summary available
@@ -53,6 +53,14 @@ Group: Documentation
 doc components for the systemd-bootchart package.
 
 
+%package extras
+Summary: extras components for the systemd-bootchart package.
+Group: Default
+
+%description extras
+extras components for the systemd-bootchart package.
+
+
 %prep
 %setup -q -n systemd-bootchart-231
 %patch1 -p1
@@ -69,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1495400583
+export SOURCE_DATE_EPOCH=1495402293
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -88,7 +96,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1495400583
+export SOURCE_DATE_EPOCH=1495402293
 rm -rf %{buildroot}
 %make_install
 
@@ -97,10 +105,14 @@ rm -rf %{buildroot}
 
 %files config
 %defattr(-,root,root,-)
-/usr/lib/systemd/system/systemd-bootchart.service
+%exclude /usr/lib/systemd/system/systemd-bootchart.service
 /usr/lib/systemd/systemd-bootchart
 
 %files doc
 %defattr(-,root,root,-)
 %doc /usr/share/man/man1/*
 %doc /usr/share/man/man5/*
+
+%files extras
+%defattr(-,root,root,-)
+/usr/lib/systemd/system/systemd-bootchart.service
