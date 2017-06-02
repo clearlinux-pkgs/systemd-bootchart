@@ -1,9 +1,7 @@
-0001-systemd-bootchart-dont-use-gold.patch
-0002-bootchart-use-ms-units-in-a-few-places.patch
-0004-bootchart-fix-per-cpu-small-scales.patch
-0005-bootchart-drop-log_info-spam-to-serial-console.patch
-0006-no-dev-urandom.patch
-0007-no-libsystemd.patch
-mountproc.patch
-wait-one-second.patch
-show_cmdline.patch
+0001-Don-t-use-gold-linker.patch
+0002-bootchart-drop-log_info-spam-to-serial-console.patch
+0003-Do-not-use-urandom-during-boot.patch
+0004-Do-not-send-the-bootchart-into-the-journal.patch
+0005-Mount-proc-early-during-boot.patch
+0006-Delay-writing-out-the-chart-result.patch
+0007-Show-the-cmdline-by-default.patch

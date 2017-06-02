@@ -1,7 +1,7 @@
-From e54f8d8a1dfc29462bd07892e619753906371b09 Mon Sep 17 00:00:00 2001
+From 10cf1fb9c689e1fe6e9c4e822f754d68b3303659 Mon Sep 17 00:00:00 2001
 From: Dimitri John Ledkov <dimitri.j.ledkov@intel.com>
 Date: Thu, 2 Jul 2015 09:43:35 +0100
-Subject: [PATCH 20/30] bootchart: drop log_info spam to serial console.
+Subject: [PATCH 2/7] bootchart: drop log_info spam to serial console.
 
 ---
  src/bootchart.c | 2 --
@@ -9,10 +9,10 @@ Subject: [PATCH 20/30] bootchart: drop log_info spam to serial console.
  2 files changed, 4 deletions(-)
 
 diff --git a/src/bootchart.c b/src/bootchart.c
-index 0587e9b..5d981d0 100644
+index 0221167..c103812 100644
 --- a/src/bootchart.c
 +++ b/src/bootchart.c
-@@ -489,8 +489,6 @@ int main(int argc, char *argv[]) {
+@@ -497,8 +497,6 @@ int main(int argc, char *argv[]) {
                  return EXIT_FAILURE;
          }
  
@@ -22,10 +22,10 @@ index 0587e9b..5d981d0 100644
          if (r < 0)
                  return EXIT_FAILURE;
 diff --git a/src/svg.c b/src/svg.c
-index af289bf..e743577 100644
+index e17fca5..f95b863 100644
 --- a/src/svg.c
 +++ b/src/svg.c
-@@ -174,8 +174,6 @@ static int svg_title(FILE *of, const char *build, int pscount, double log_start,
+@@ -173,8 +173,6 @@ static int svg_title(FILE *of, const char *build, int pscount, double log_start,
                  xsprintf(filename, "/sys/block/%s/device/model", rootbdev);
  
                  r = read_one_line_file(filename, &model);
@@ -35,5 +35,5 @@ index af289bf..e743577 100644
  
          /* various utsname parameters */
 -- 
-2.8.2
+2.13.0
 

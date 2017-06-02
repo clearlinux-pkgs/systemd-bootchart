@@ -1,0 +1,29 @@
+From d7336be6f6a334975799d87e55b020f2895cce49 Mon Sep 17 00:00:00 2001
+From: Auke Kok <auke-jan.h.kok@intel.com>
+Date: Fri, 2 Jun 2017 13:35:15 -0700
+Subject: [PATCH 3/7] Do not use urandom during boot.
+
+During early boot, /dev/urandom can actually block....
+.... and we only want random-ish data for hash table keying.
+---
+ src/random-util.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/random-util.c b/src/random-util.c
+index a0be2f9..25dce14 100644
+--- a/src/random-util.c
++++ b/src/random-util.c
+@@ -118,10 +118,6 @@ void random_bytes(void *p, size_t n) {
+         uint8_t *q;
+         int r;
+ 
+-        r = dev_urandom(p, n);
+-        if (r >= 0)
+-                return;
+-
+         /* If some idiot made /dev/urandom unavailable to us, he'll
+          * get a PRNG instead. */
+ 
+-- 
+2.13.0
+

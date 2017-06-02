@@ -1,0 +1,42 @@
+From 3de9ab21ec675053aef5266e4eb394e17ee9979d Mon Sep 17 00:00:00 2001
+From: Auke Kok <auke-jan.h.kok@intel.com>
+Date: Fri, 2 Jun 2017 13:36:13 -0700
+Subject: [PATCH 4/7] Do not send the bootchart into the journal.
+
+---
+ configure.ac    | 3 ---
+ src/bootchart.c | 4 ----
+ 2 files changed, 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b1fa59a..2f5de5e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,9 +62,6 @@ AC_CHECK_DECLS([gettid, getrandom], [], [], [[
+ #include <linux/random.h>
+ ]])
+ 
+-PKG_CHECK_MODULES(LIBSYSTEMD, [libsystemd >= 221],
+-	[], [AC_MSG_ERROR([*** libsystemd library not found])])
+-
+ CC_CHECK_FLAGS_APPEND([with_cflags], [CFLAGS], [\
+         -pipe \
+         -Wall \
+diff --git a/src/bootchart.c b/src/bootchart.c
+index c103812..eb7b7ab 100644
+--- a/src/bootchart.c
++++ b/src/bootchart.c
+@@ -297,10 +297,6 @@ static int do_journal_append(char *file) {
+         iovec[j].iov_len = 10 + n;
+         j++;
+ 
+-        r = sd_journal_sendv(iovec, j);
+-        if (r < 0)
+-                log_error_errno(r, "Failed to send bootchart: %m");
+-
+         return 0;
+ }
+ 
+-- 
+2.13.0
+
