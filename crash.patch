@@ -1,0 +1,11 @@
+--- systemd-bootchart-232/src/svg.c~	2017-04-05 16:10:33.000000000 +0000
++++ systemd-bootchart-232/src/svg.c	2017-06-09 22:59:10.037186192 +0000
+@@ -1188,6 +1188,8 @@
+         }
+ 
+         /* need to know last node first */
++	if (!ps)
++		ps = ps_first;
+         ps->sample = ps->first;
+         i = ps->sample->next->sampledata->counter;
+ 

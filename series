@@ -5,3 +5,4 @@
 0005-Mount-proc-early-during-boot.patch
 0006-Delay-writing-out-the-chart-result.patch
 0007-Show-the-cmdline-by-default.patch
+crash.patch
