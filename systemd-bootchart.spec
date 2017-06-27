@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 232
-Release  : 15
+Release  : 16
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v232/systemd-bootchart-232.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v232/systemd-bootchart-232.tar.xz
 Summary  : No detailed summary available
@@ -22,9 +22,6 @@ BuildRequires : libxslt-bin
 BuildRequires : m4
 BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(libsystemd)
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 Patch1: 0001-Don-t-use-gold-linker.patch
 Patch2: 0002-bootchart-drop-log_info-spam-to-serial-console.patch
 Patch3: 0003-Do-not-use-urandom-during-boot.patch
@@ -80,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1497049357
+export SOURCE_DATE_EPOCH=1498524791
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -99,7 +96,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1497049357
+export SOURCE_DATE_EPOCH=1498524791
 rm -rf %{buildroot}
 %make_install
 
