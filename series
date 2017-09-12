@@ -1,7 +1,5 @@
-0001-Don-t-use-gold-linker.patch
 0002-bootchart-drop-log_info-spam-to-serial-console.patch
 0003-Do-not-use-urandom-during-boot.patch
-0004-Do-not-send-the-bootchart-into-the-journal.patch
 0005-Mount-proc-early-during-boot.patch
 0006-Delay-writing-out-the-chart-result.patch
 0007-Show-the-cmdline-by-default.patch

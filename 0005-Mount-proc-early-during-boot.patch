@@ -17,9 +17,9 @@ index eb7b7ab..69c7e13 100644
  
 +#include <sys/mount.h>
 +
+ #ifdef HAVE_LIBSYSTEMD
  #include <systemd/sd-journal.h>
- 
- #include "alloc-util.h"
+ #endif
 @@ -326,6 +328,10 @@ int main(int argc, char *argv[]) {
          bool has_procfs = false;
  
