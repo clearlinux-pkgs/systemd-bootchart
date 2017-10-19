@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 233
-Release  : 23
+Release  : 24
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Summary  : No detailed summary available
@@ -18,7 +18,12 @@ BuildRequires : pkgconfig(libsystemd)
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
-Patch1: 0008-Prevent-null-deref-detecting-idle.patch
+Patch1: 0002-bootchart-drop-log_info-spam-to-serial-console.patch
+Patch2: 0003-Do-not-use-urandom-during-boot.patch
+Patch3: 0005-Mount-proc-early-during-boot.patch
+Patch4: 0006-Delay-writing-out-the-chart-result.patch
+Patch5: 0007-Show-the-cmdline-by-default.patch
+Patch6: 0008-Prevent-null-deref-detecting-idle.patch
 
 %description
 For systemd-bootchart, several proc debug interfaces are required in the kernel config:
@@ -53,13 +58,18 @@ extras components for the systemd-bootchart package.
 %prep
 %setup -q -n systemd-bootchart-233
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1508442991
+export SOURCE_DATE_EPOCH=1508443723
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -78,7 +88,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 
 %install
-export SOURCE_DATE_EPOCH=1508442991
+export SOURCE_DATE_EPOCH=1508443723
 rm -rf %{buildroot}
 %make_install
 
