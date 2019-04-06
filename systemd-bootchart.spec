@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 233
-Release  : 29
+Release  : 30
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Summary  : Boot performance graphing tool
@@ -16,9 +16,6 @@ Requires: systemd-bootchart-services = %{version}-%{release}
 BuildRequires : docbook-xml
 BuildRequires : libxslt-bin
 BuildRequires : pkgconfig(libsystemd)
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 Patch1: 0002-bootchart-drop-log_info-spam-to-serial-console.patch
 Patch2: 0003-Do-not-use-urandom-during-boot.patch
 Patch3: 0005-Mount-proc-early-during-boot.patch
@@ -78,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554567532
+export SOURCE_DATE_EPOCH=1554567787
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -97,7 +94,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 
 %install
-export SOURCE_DATE_EPOCH=1554567532
+export SOURCE_DATE_EPOCH=1554567787
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemd-bootchart
 cp LICENSE.GPL2 %{buildroot}/usr/share/package-licenses/systemd-bootchart/LICENSE.GPL2
