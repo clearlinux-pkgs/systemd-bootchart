@@ -1,6 +1,6 @@
+0001-Hardcode-clear-defaults.patch
 0002-bootchart-drop-log_info-spam-to-serial-console.patch
 0003-Do-not-use-urandom-during-boot.patch
 0005-Mount-proc-early-during-boot.patch
 0006-Delay-writing-out-the-chart-result.patch
-0007-Show-the-cmdline-by-default.patch
 0008-Prevent-null-deref-detecting-idle.patch

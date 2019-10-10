@@ -1,0 +1,49 @@
+From 88c698617b494d4ca90c0d83e0d7cdd8d328a16b Mon Sep 17 00:00:00 2001
+From: Auke Kok <auke-jan.h.kok@intel.com>
+Date: Thu, 10 Oct 2019 10:56:41 -0700
+Subject: [PATCH] Hardcode clear defaults.
+
+We have a conf file, but initramfs makes things more complex,
+we should just bake these in to avoid reading/parsing as well.
+
+Slightly make the chart longer - I see a LOT of truncated bootcharts.
+---
+ src/bootchart.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/bootchart.c b/src/bootchart.c
+index bb11a42..87d87ed 100644
+--- a/src/bootchart.c
++++ b/src/bootchart.c
+@@ -69,9 +69,9 @@
+ 
+ static int exiting = 0;
+ 
+-#define DEFAULT_SAMPLES_LEN 500
+-#define DEFAULT_HZ 25.0
+-#define DEFAULT_SCALE_X 100.0 /* 100px = 1sec */
++#define DEFAULT_SAMPLES_LEN 200
++#define DEFAULT_HZ 200
++#define DEFAULT_SCALE_X 2600.0
+ #define DEFAULT_SCALE_Y 20.0  /* 16px = 1 process bar */
+ #define DEFAULT_INIT ROOTLIBEXECDIR "/systemd"
+ #define DEFAULT_OUTPUT "/run/log"
+@@ -80,11 +80,11 @@ static int exiting = 0;
+ bool arg_entropy = false;
+ bool arg_initcall = true;
+ bool arg_relative = false;
+-bool arg_filter = true;
+-bool arg_show_cmdline = false;
+-bool arg_show_cgroup = false;
++bool arg_filter = false;
++bool arg_show_cmdline = true;
++bool arg_show_cgroup = true;
+ bool arg_pss = false;
+-bool arg_percpu = false;
++bool arg_percpu = true;
+ int arg_samples_len = DEFAULT_SAMPLES_LEN; /* we record len+1 (1 start sample) */
+ double arg_hz = DEFAULT_HZ;
+ double arg_scale_x = DEFAULT_SCALE_X;
+-- 
+2.23.0
+

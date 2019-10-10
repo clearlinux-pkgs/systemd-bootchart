@@ -4,23 +4,22 @@
 #
 Name     : systemd-bootchart
 Version  : 233
-Release  : 30
+Release  : 31
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
-Summary  : Boot performance graphing tool
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: systemd-bootchart-license = %{version}-%{release}
 Requires: systemd-bootchart-man = %{version}-%{release}
-Requires: systemd-bootchart-services = %{version}-%{release}
 BuildRequires : docbook-xml
 BuildRequires : libxslt-bin
 BuildRequires : pkgconfig(libsystemd)
-Patch1: 0002-bootchart-drop-log_info-spam-to-serial-console.patch
-Patch2: 0003-Do-not-use-urandom-during-boot.patch
-Patch3: 0005-Mount-proc-early-during-boot.patch
-Patch4: 0006-Delay-writing-out-the-chart-result.patch
-Patch5: 0007-Show-the-cmdline-by-default.patch
+Patch1: 0001-Hardcode-clear-defaults.patch
+Patch2: 0002-bootchart-drop-log_info-spam-to-serial-console.patch
+Patch3: 0003-Do-not-use-urandom-during-boot.patch
+Patch4: 0005-Mount-proc-early-during-boot.patch
+Patch5: 0006-Delay-writing-out-the-chart-result.patch
 Patch6: 0008-Prevent-null-deref-detecting-idle.patch
 
 %description
@@ -53,14 +52,6 @@ Group: Default
 man components for the systemd-bootchart package.
 
 
-%package services
-Summary: services components for the systemd-bootchart package.
-Group: Systemd services
-
-%description services
-services components for the systemd-bootchart package.
-
-
 %prep
 %setup -q -n systemd-bootchart-233
 %patch1 -p1
@@ -74,8 +65,9 @@ services components for the systemd-bootchart package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554567787
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1570734504
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -87,14 +79,14 @@ export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 
 %install
-export SOURCE_DATE_EPOCH=1554567787
+export SOURCE_DATE_EPOCH=1570734504
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemd-bootchart
 cp LICENSE.GPL2 %{buildroot}/usr/share/package-licenses/systemd-bootchart/LICENSE.GPL2
@@ -119,7 +111,3 @@ cp LICENSE.LGPL2.1 %{buildroot}/usr/share/package-licenses/systemd-bootchart/LIC
 /usr/share/man/man1/systemd-bootchart.1
 /usr/share/man/man5/bootchart.conf.5
 /usr/share/man/man5/bootchart.conf.d.5
-
-%files services
-%defattr(-,root,root,-)
-%exclude /usr/lib/systemd/system/systemd-bootchart.service
