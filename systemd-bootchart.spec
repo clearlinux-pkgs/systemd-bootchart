@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 233
-Release  : 32
+Release  : 33
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Summary  : No detailed summary available
