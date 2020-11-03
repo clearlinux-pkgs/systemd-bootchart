@@ -4,7 +4,7 @@
 #
 Name     : systemd-bootchart
 Version  : 233
-Release  : 33
+Release  : 34
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v233/systemd-bootchart-233.tar.xz
 Summary  : No detailed summary available
@@ -54,6 +54,7 @@ man components for the systemd-bootchart package.
 
 %prep
 %setup -q -n systemd-bootchart-233
+cd %{_builddir}/systemd-bootchart-233
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -66,14 +67,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570734504
+export SOURCE_DATE_EPOCH=1604441948
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -86,11 +87,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check || :
 
 %install
-export SOURCE_DATE_EPOCH=1570734504
+export SOURCE_DATE_EPOCH=1604441948
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemd-bootchart
-cp LICENSE.GPL2 %{buildroot}/usr/share/package-licenses/systemd-bootchart/LICENSE.GPL2
-cp LICENSE.LGPL2.1 %{buildroot}/usr/share/package-licenses/systemd-bootchart/LICENSE.LGPL2.1
+cp %{_builddir}/systemd-bootchart-233/LICENSE.GPL2 %{buildroot}/usr/share/package-licenses/systemd-bootchart/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/systemd-bootchart-233/LICENSE.LGPL2.1 %{buildroot}/usr/share/package-licenses/systemd-bootchart/01a6b4bf79aca9b556822601186afab86e8c4fbf
 %make_install
 
 %files
@@ -103,8 +104,8 @@ cp LICENSE.LGPL2.1 %{buildroot}/usr/share/package-licenses/systemd-bootchart/LIC
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/systemd-bootchart/LICENSE.GPL2
-/usr/share/package-licenses/systemd-bootchart/LICENSE.LGPL2.1
+/usr/share/package-licenses/systemd-bootchart/01a6b4bf79aca9b556822601186afab86e8c4fbf
+/usr/share/package-licenses/systemd-bootchart/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
 
 %files man
 %defattr(0644,root,root,0755)
