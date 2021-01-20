@@ -3,4 +3,4 @@
 0003-Do-not-use-urandom-during-boot.patch
 0005-Mount-proc-early-during-boot.patch
 0006-Delay-writing-out-the-chart-result.patch
-0008-Prevent-null-deref-detecting-idle.patch
+#0008-Prevent-null-deref-detecting-idle.patch
