@@ -7,7 +7,7 @@
 #
 Name     : systemd-bootchart
 Version  : 235
-Release  : 40
+Release  : 41
 URL      : https://github.com/systemd/systemd-bootchart/archive/v235/systemd-bootchart-235.tar.gz
 Source0  : https://github.com/systemd/systemd-bootchart/archive/v235/systemd-bootchart-235.tar.gz
 Summary  : No detailed summary available
