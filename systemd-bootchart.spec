@@ -7,7 +7,7 @@
 #
 Name     : systemd-bootchart
 Version  : 234
-Release  : 57
+Release  : 58
 URL      : https://github.com/systemd/systemd-bootchart/releases/download/v234/systemd-bootchart-234.tar.xz
 Source0  : https://github.com/systemd/systemd-bootchart/releases/download/v234/systemd-bootchart-234.tar.xz
 Summary  : No detailed summary available
